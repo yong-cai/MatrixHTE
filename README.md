@@ -5,5 +5,5 @@ To install directly from within R, run the following:
  ```
 install("devtools")
 library("devtools")
-install_github("yong-cai/WCR")
+install_github("yong-cai/MatrixHTE")
 ```
