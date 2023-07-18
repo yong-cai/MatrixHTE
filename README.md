@@ -1,5 +1,5 @@
 # MatrixHTE
-R Package for Heterogeneous Treatment Effects on Matrices (Auerbach and Cai 2022)
+R Package for Identifying Socially Disruptive Policies (Auerbach and Cai, 2023)
 
 To install directly from within R, run the following:
  ```

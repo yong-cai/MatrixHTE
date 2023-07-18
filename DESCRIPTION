@@ -11,7 +11,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "yongcai@uchicago.edu"))
 Maintainer: Yong Cai <yongcai2023@u.northwestern.edu>	
-Description: This package contains functions for implementing the methods proposed in Identifying Social Disruptions (Auerbach and Cai, 2023). For a complete list of functions, use \code{library(help = "MatrixHTE")}.
+Description: This package contains functions for implementing the methods proposed in Identifying Socially Disruptive Policies (Auerbach and Cai, 2023). For a complete list of functions, use \code{library(help = "MatrixHTE")}.
 Depends: ggplot2 (>= 3.3.6), pracma
 License: `use_mit_license()`
 Encoding: UTF-8
