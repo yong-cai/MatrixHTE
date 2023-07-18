@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds_functions_public.R
 \name{dte_bounds}
 \alias{dte_bounds}
-\title{Bounds for Distribution of Treatment Effects}
+\title{Matrix Makarov Bounds Entire Distribution of Treatment Effects}
 \usage{
 dte_bounds(
   Treat.Mat,
@@ -34,12 +34,18 @@ dte_bounds(
 
 \item{n.grid}{Number of grid points to search over for evaluating the bounds at each point.}
 
-\item{hc}{Logical indicating whether or not to incorporate row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2022).}
+\item{hc}{Logical indicating whether or not to correct for row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2023).}
 
 \item{eval.points}{Vector indicating additional points at which DTE should be explicitly evaluated.}
 }
 \value{
-Lower and upper bounds for the DTE over the grid points.
+A list of bounds and the components.\tabular{ll}{
+\code{dte} \tab Lower and upper bounds for the DTE over the grid points. \cr
+\tab \cr
+\code{lower.breakdown} \tab Breakdown of the lower bounds into the vectorized Frechet-Hoeffding (vf) and eigenvalue-based (evb) components. Trivial bounds for probability are 0 and 1. \cr
+\tab \cr
+\code{upper.breakdown} \tab Breakdown of the upper bounds into the vectorized Frechet-Hoeffding (vf) and eigenvalue-based (evb) components. Trivial bounds for probability are 0 and 1. \cr
+}
 }
 \description{
 This function computes the bounds for the distribution of treatment effects (DTE) along a sequence of points. Specifically, it computes bounds for \eqn{\Delta(y)} for \eqn{y \in [start, end]}. The output of this function can be plotted directly using \code{plot()}.
@@ -48,7 +54,7 @@ This function computes the bounds for the distribution of treatment effects (DTE
 # Generate data
 Treat.Mat <- matrix(runif(200) > 0.8, 10, 20)*1
 Control.Mat <- matrix(runif(100) > 0.8, 10, 10)*1
-
+  
 # Generate DTE and plot it
 bounds <- dte_bounds(Treat.Mat, Control.Mat, -5, 5, smooth = TRUE)
 plot(bounds)

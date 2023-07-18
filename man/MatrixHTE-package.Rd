@@ -6,15 +6,14 @@
 \alias{MatrixHTE-package}
 \title{MatrixHTE: Heterogeneous Treatment Effects for Networks, Panels and Other Outcome Matrices}
 \description{
-This package contains functions for implementing the methods proposed in Auerbach and Cai (2022). For a complete list of functions, use \code{library(help = "MatrixHTE")}.
+This package contains functions for implementing the methods proposed in Identifying Social Disruptions (Auerbach and Cai, 2023). For a complete list of functions, use \code{library(help = "MatrixHTE")}.
 }
 \author{
-\strong{Maintainer}: Yong Cai \email{yongcai2023@u.northwestern.edu}
+\strong{Maintainer}: Yong Cai \email{yongcai@uchicago.edu}
 
 Authors:
 \itemize{
   \item Eric Auerbach \email{eric.auerbach@northwestern.edu}
-  \item Yong Cai \email{yongcai2023@u.northwestern.edu}
 }
 
 }

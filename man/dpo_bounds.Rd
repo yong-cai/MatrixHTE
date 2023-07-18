@@ -2,17 +2,9 @@
 % Please edit documentation in R/bounds_functions_public.R
 \name{dpo_bounds}
 \alias{dpo_bounds}
-\title{Bounds for Distribution of Potential Outcomes}
+\title{Matrix Frechet-Hoeffding Bounds for Distribution of Potential Outcomes}
 \usage{
-dpo_bounds(
-  Treat.Mat,
-  Control.Mat,
-  y1,
-  y0,
-  smooth = FALSE,
-  bandwidth = NULL,
-  hc = FALSE
-)
+dpo_bounds(Treat.Mat, Control.Mat, y1, y0, hc = FALSE)
 }
 \arguments{
 \item{Treat.Mat}{Matrix of outcomes for treated units}
@@ -23,26 +15,27 @@ dpo_bounds(
 
 \item{y0}{y0 in F(y1, y0).}
 
-\item{smooth}{Logical indicating whether the smoothing should be performed. Smoothing is recommended if potential outcomes are estimated.}
-
-\item{bandwidth}{Bandwidth to be used for smoothing}
-
-\item{hc}{Logical indicating whether or not to incorporate row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2022).}
+\item{hc}{Logical indicating whether or not to correct for row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2023).}
 }
 \value{
-Lower and upper bounds for the DPO.
+A list of bounds and the components.\tabular{ll}{
+\code{bounds} \tab Lower and upper bounds for the DPO. \cr
+\tab \cr
+\code{breakdown} \tab Breakdown of the bounds into the vectorized Frechet-Hoeffding (vf) and eigenvalue-based (evb) components. Trivial bounds for probability are 0 and 1. \cr
+}
 }
 \description{
-This function implements the bounds for the distribution of potential outcomes as described in Proposition 1 of Auerbach and Cai (2022).
+This function implements the bounds for the distribution of potential outcomes as described in Proposition 1 of Auerbach and Cai (2023).
+Outcomes are not smoothed. For estimated potential outcomes, consider using \code{dpo_bounds_svt()}.
 }
 \examples{
 # Generate data
 Treat.Mat <- matrix(runif(200) > 0.8, 10, 20)*1
 Control.Mat <- matrix(runif(100) > 0.8, 10, 10)*1
-
+  
 # P(Treat.Mat <= 0.5, Control.Mat <= 0.5)
-dpo_bounds(Treat.Mat, Control.Mat, 0.5, 0.5)
+dpo_bounds(Treat.Mat, Control.Mat, 0.5, 0.5)$bounds
 
-# P(Treat.Mat == 1, Control.Mat == 1)
-dpo_bounds(-Treat.Mat, -Control.Mat, -0.5, -0.5) # input matrices are binary
+# P(Treat.Mat == 1, Control.Mat == 1) 
+dpo_bounds(-Treat.Mat, -Control.Mat, -0.5, -0.5)$bounds # input matrices are binary
 }

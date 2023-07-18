@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds_functions_public.R
 \name{ste}
 \alias{ste}
-\title{Spectral Treatment Effects}
+\title{Spectral of Treatment Effects}
 \usage{
 ste(Treat.Mat, Control.Mat, hc = FALSE)
 }
@@ -11,7 +11,7 @@ ste(Treat.Mat, Control.Mat, hc = FALSE)
 
 \item{Control.Mat}{Matrix of outcomes for control units}
 
-\item{hc}{Logical indicating whether or not to incorporate row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2022).}
+\item{hc}{Logical indicating whether or not to correct for row and column heterogeneity. See Section 5.2 of Auerbach and Cai (2023).}
 }
 \value{
 An object of class \code{ste} containing \tabular{ll}{
@@ -21,11 +21,15 @@ An object of class \code{ste} containing \tabular{ll}{
 \tab \cr
 \code{treat.cf} \tab Counterfactual for treated units based on eigenvalue imputation. \cr
 \tab \cr
-\code{control.cf} \tab Counterfactual for control units based on eigenvalue imputation. \cr
+\code{treat.cf.breakdown} \tab Breakdown of \code{treat.cf} into imputed row means, imputed column means and imputed residuals. Row and column means are separately imputed only when \code{hc = TRUE}.\cr
+\tab \cr
+\code{control} \tab Counterfactual for control units based on eigenvalue imputation. \cr
+\tab \cr
+\code{control.cf.breakdown} \tab Breakdown of \code{treat.cf} into imputed row means, imputed column means and imputed residuals. Row and column means are separately imputed only when \code{hc = TRUE}.\cr
 }
 }
 \description{
-This function computes spectral treatment effects as described in Section 3.2.2 of Auerbach and Cai (2022).
+This function computes spectral treatment effects as described in Section 4.2.3 of Auerbach and Cai (2023).
 }
 \examples{
 # Generate Data

@@ -19,7 +19,7 @@ Method for plotting DTE.
 # Generate data
 Treat.Mat <- matrix(runif(200) > 0.8, 10, 20)*1
 Control.Mat <- matrix(runif(100) > 0.8, 10, 10)*1
-
+  
 # Generate DTE and plot it
 bounds <- dte_bounds(Treat.Mat, Control.Mat, -5, 5, smooth = TRUE)
 plot(bounds)
